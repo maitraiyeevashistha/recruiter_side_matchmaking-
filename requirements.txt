@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+pydantic
+sentence-transformers
+chromadb
+rank-bm25
+numpy
+torch
+transformers
+python-dotenv
