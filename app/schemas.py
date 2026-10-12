@@ -2,11 +2,19 @@ from __future__ import annotations
 
 from typing import Any
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
+
 
 
 class StudentProfileRequest(BaseModel):
     student_id: str = Field(min_length=1)
+
+    @field_validator("student_id")
+    @classmethod
+    def validate_student_id(cls, value: str) -> str:
+        if not value.strip():
+            raise ValueError("student_id must not be empty or whitespace")
+        return value
 
     name: str = ""
 
